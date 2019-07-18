@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Cookies Test for Extensions</title>
+
+<script>
+
+function initCookies() {
+	console.log('init cookies');
+	console.log(`Cookie: "${document.cookie}"`);
+
+	var c = document.cookie;
+	if (!c || c === '') {
+		document.cookie = 'Hello World#/';
+	}
+
+	document.cookie = document.cookie + Date.now() + '/';
+	console.log(`Cookie: "${document.cookie}"`);
+
+	document.getElementById('cookie_value').innerHTML = document.cookie;
+}
+
+function clearCookies() {
+	document.cookie = '';
+	console.log('Cookies cleared');
+}
+
+</script>
+
+</head>
+<body onload="initCookies();">
+
+<h1>Cookies Test</h1>
+
+<div>Cookie content follows. A timestamp is appended on each load.</div>
+<div id="cookie_value"></div>
+
+<p><input type="button" value="Clear Cookie" onclick="clearCookies();"/></p>
+
+</body>
+</html>
